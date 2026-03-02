@@ -12,10 +12,5 @@ use Generated\Shared\Transfer\ResetPasswordTransfer;
 
 interface UserPasswordResetRepositoryInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\ResetPasswordCriteriaTransfer $resetPasswordCriteriaTransfer
-     *
-     * @return \Generated\Shared\Transfer\ResetPasswordTransfer|null
-     */
     public function findOne(ResetPasswordCriteriaTransfer $resetPasswordCriteriaTransfer): ?ResetPasswordTransfer;
 }

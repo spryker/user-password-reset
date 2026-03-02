@@ -21,9 +21,6 @@ use Spryker\Zed\UserPasswordReset\UserPasswordResetDependencyProvider;
  */
 class UserPasswordResetBusinessFactory extends AbstractBusinessFactory
 {
-    /**
-     * @return \Spryker\Zed\UserPasswordReset\Business\ResetPassword\ResetPasswordInterface
-     */
     public function createResetPassword(): ResetPasswordInterface
     {
         return new ResetPassword(
@@ -36,17 +33,11 @@ class UserPasswordResetBusinessFactory extends AbstractBusinessFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\UserPasswordReset\Dependency\Facade\UserPasswordResetToUserFacadeInterface
-     */
     public function getUserFacade(): UserPasswordResetToUserFacadeInterface
     {
         return $this->getProvidedDependency(UserPasswordResetDependencyProvider::FACADE_USER);
     }
 
-    /**
-     * @return \Spryker\Zed\UserPasswordReset\Dependency\Service\UserPasswordResetToUtilTextServiceInterface
-     */
     public function getUtilTextService(): UserPasswordResetToUtilTextServiceInterface
     {
         return $this->getProvidedDependency(UserPasswordResetDependencyProvider::SERVICE_UTIL_TEXT);

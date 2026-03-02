@@ -18,17 +18,11 @@ use Spryker\Zed\UserPasswordReset\Persistence\Propel\Mapper\ResetPasswordMapper;
  */
 class UserPasswordResetPersistenceFactory extends AbstractPersistenceFactory
 {
-    /**
-     * @return \Spryker\Zed\UserPasswordReset\Persistence\Propel\Mapper\ResetPasswordMapper
-     */
     public function createPropelResetPasswordMapper(): ResetPasswordMapper
     {
         return new ResetPasswordMapper();
     }
 
-    /**
-     * @return \Orm\Zed\UserPasswordReset\Persistence\SpyResetPasswordQuery
-     */
     public function createPropelResetPasswordQuery(): SpyResetPasswordQuery
     {
         return SpyResetPasswordQuery::create();

@@ -81,9 +81,6 @@ class UserPasswordResetFacadeTest extends Unit
      */
     protected $authFacade;
 
-    /**
-     * @return void
-     */
     public function testRequestPasswordResetCreatesResetPassword(): void
     {
         // Arrange
@@ -105,9 +102,6 @@ class UserPasswordResetFacadeTest extends Unit
         $this->assertNotNull($resetPasswordTransfer->getCode());
     }
 
-    /**
-     * @return void
-     */
     public function testRequestPasswordResetReturnsFalseForNotExistingUser(): void
     {
         // Arrange
@@ -123,9 +117,6 @@ class UserPasswordResetFacadeTest extends Unit
         $this->assertFalse($result);
     }
 
-    /**
-     * @return void
-     */
     public function testResetPasswordResetsPasswordAndResetPasswordCode(): void
     {
         // Arrange
@@ -147,9 +138,6 @@ class UserPasswordResetFacadeTest extends Unit
         $this->assertSame(SpyResetPasswordTableMap::COL_STATUS_USED, $resetPasswordTransfer->getStatus());
     }
 
-    /**
-     * @return void
-     */
     public function testIsValidPasswordResetTokenReturnsTrueForValidToken(): void
     {
         // Arrange
@@ -169,9 +157,6 @@ class UserPasswordResetFacadeTest extends Unit
         $this->assertTrue($isValidPasswordResetToken);
     }
 
-    /**
-     * @return void
-     */
     public function testIsValidPasswordResetTokenReturnsFalseForInvalidToken(): void
     {
         // Arrange
@@ -200,9 +185,6 @@ class UserPasswordResetFacadeTest extends Unit
         $this->assertFalse($isValidNotExistingPasswordResetToken);
     }
 
-    /**
-     * @return void
-     */
     public function testRequestPasswordResetReturnsFalseForNonActiveUser(): void
     {
         // Arrange
@@ -221,9 +203,6 @@ class UserPasswordResetFacadeTest extends Unit
         $this->assertFalse($isPasswordResetSuccessfully, 'It is not possible to request restore password for non active user');
     }
 
-    /**
-     * @return void
-     */
     public function testRequestPasswordResetReturnsFalseForUsedToken(): void
     {
         // Arrange
@@ -252,9 +231,6 @@ class UserPasswordResetFacadeTest extends Unit
         $this->assertFalse($isValidUsedPasswordResetToken);
     }
 
-    /**
-     * @return void
-     */
     public function testRequestPasswordResetReturnsFalseForExpiredToken(): void
     {
         // Arrange
@@ -283,9 +259,6 @@ class UserPasswordResetFacadeTest extends Unit
         $this->assertFalse($isValidUsedPasswordResetToken);
     }
 
-    /**
-     * @return void
-     */
     public function testRequestPasswordResetWillInvalidatePreviousResetsWhenANewResetIsRequested(): void
     {
         // Arrange

@@ -11,24 +11,9 @@ use Generated\Shared\Transfer\ResetPasswordTransfer;
 
 interface UserPasswordResetEntityManagerInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\ResetPasswordTransfer $resetPasswordTransfer
-     *
-     * @return \Generated\Shared\Transfer\ResetPasswordTransfer
-     */
     public function createResetPassword(ResetPasswordTransfer $resetPasswordTransfer): ResetPasswordTransfer;
 
-    /**
-     * @param \Generated\Shared\Transfer\ResetPasswordTransfer $resetPasswordTransfer
-     *
-     * @return \Generated\Shared\Transfer\ResetPasswordTransfer
-     */
     public function updateResetPassword(ResetPasswordTransfer $resetPasswordTransfer): ResetPasswordTransfer;
 
-    /**
-     * @param \Generated\Shared\Transfer\ResetPasswordTransfer $resetPasswordTransfer
-     *
-     * @return \Generated\Shared\Transfer\ResetPasswordTransfer
-     */
     public function invalidatePreviousPasswordResets(ResetPasswordTransfer $resetPasswordTransfer): ResetPasswordTransfer;
 }

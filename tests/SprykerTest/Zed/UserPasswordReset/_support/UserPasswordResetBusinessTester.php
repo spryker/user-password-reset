@@ -32,19 +32,11 @@ class UserPasswordResetBusinessTester extends Actor
 {
     use _generated\UserPasswordResetBusinessTesterActions;
 
-    /**
-     * @return \Spryker\Zed\UserPasswordReset\Business\UserPasswordResetFacadeInterface
-     */
     public function getUserPasswordReset(): UserPasswordResetFacadeInterface
     {
         return $this->getLocator()->userPasswordReset()->facade();
     }
 
-    /**
-     * @param int $idAuthResetPassword
-     *
-     * @return \Generated\Shared\Transfer\ResetPasswordTransfer|null
-     */
     public function findResetPasswordTransferByIdAuthResetPassword(int $idAuthResetPassword): ?ResetPasswordTransfer
     {
         $resetPasswordEntity = $this->createResetPasswordPropelQuery()
@@ -60,11 +52,6 @@ class UserPasswordResetBusinessTester extends Actor
             ->setFkUserId($resetPasswordEntity->getFkUser());
     }
 
-    /**
-     * @param int $idUser
-     *
-     * @return \Generated\Shared\Transfer\ResetPasswordTransfer|null
-     */
     public function findResetPasswordTransferByIdUser(int $idUser): ?ResetPasswordTransfer
     {
         $resetPasswordEntity = $this->createResetPasswordPropelQuery()
@@ -80,12 +67,6 @@ class UserPasswordResetBusinessTester extends Actor
             ->setFkUserId($resetPasswordEntity->getFkUser());
     }
 
-    /**
-     * @param int $idAuthResetPassword
-     * @param \Generated\Shared\Transfer\ResetPasswordTransfer $resetPasswordTransfer
-     *
-     * @return void
-     */
     public function updateResetPasswordByIdAuthResetPassword(int $idAuthResetPassword, ResetPasswordTransfer $resetPasswordTransfer): void
     {
         $resetPasswordEntity = $this->createResetPasswordPropelQuery()
@@ -108,9 +89,6 @@ class UserPasswordResetBusinessTester extends Actor
             ->save();
     }
 
-    /**
-     * @return \Orm\Zed\UserPasswordReset\Persistence\SpyResetPasswordQuery
-     */
     protected function createResetPasswordPropelQuery(): SpyResetPasswordQuery
     {
         return SpyResetPasswordQuery::create();

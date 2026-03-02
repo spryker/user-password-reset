@@ -11,25 +11,9 @@ use Generated\Shared\Transfer\UserPasswordResetRequestTransfer;
 
 interface ResetPasswordInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\UserPasswordResetRequestTransfer $userPasswordResetRequestTransfer
-     *
-     * @return bool
-     */
     public function requestPasswordReset(UserPasswordResetRequestTransfer $userPasswordResetRequestTransfer): bool;
 
-    /**
-     * @param string $token
-     *
-     * @return bool
-     */
     public function isValidPasswordResetToken(string $token): bool;
 
-    /**
-     * @param string $token
-     * @param string $password
-     *
-     * @return bool
-     */
     public function setNewPassword(string $token, string $password): bool;
 }

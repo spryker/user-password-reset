@@ -103,11 +103,6 @@ class ResetPassword implements ResetPasswordInterface
         $this->userPasswordResetRequestStrategyPlugins = $userPasswordResetRequestStrategyPlugins;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\UserPasswordResetRequestTransfer $userPasswordResetRequestTransfer
-     *
-     * @return bool
-     */
     public function requestPasswordReset(UserPasswordResetRequestTransfer $userPasswordResetRequestTransfer): bool
     {
         $userPasswordResetRequestTransfer->requireEmail();
@@ -141,11 +136,6 @@ class ResetPassword implements ResetPasswordInterface
         return (bool)$resetPasswordTransfer->getIdResetPassword();
     }
 
-    /**
-     * @param string $token
-     *
-     * @return bool
-     */
     public function isValidPasswordResetToken(string $token): bool
     {
         $resetPasswordTransfer = $this->passwordResetRepository->findOne(
@@ -155,12 +145,6 @@ class ResetPassword implements ResetPasswordInterface
         return $resetPasswordTransfer !== null && $this->isTokenActive($resetPasswordTransfer);
     }
 
-    /**
-     * @param string $token
-     * @param string $password
-     *
-     * @return bool
-     */
     public function setNewPassword(string $token, string $password): bool
     {
         $resetPasswordTransfer = $this->passwordResetRepository->findOne(
@@ -189,29 +173,16 @@ class ResetPassword implements ResetPasswordInterface
         return true;
     }
 
-    /**
-     * @return string
-     */
     protected function generateToken(): string
     {
         return $this->utilTextService->generateRandomString(static::RANDOM_STRING_LENGTH);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ResetPasswordTransfer $resetPasswordTransfer
-     *
-     * @return bool
-     */
     protected function isTokenActive(ResetPasswordTransfer $resetPasswordTransfer): bool
     {
         return $resetPasswordTransfer->getStatus() === static::STATUS_ACTIVE && !$this->isExpiredPasswordResetToken($resetPasswordTransfer);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ResetPasswordTransfer $resetPasswordTransfer
-     *
-     * @return bool
-     */
     protected function isExpiredPasswordResetToken(ResetPasswordTransfer $resetPasswordTransfer): bool
     {
         /** @var string $createdAt */
@@ -229,12 +200,6 @@ class ResetPassword implements ResetPasswordInterface
         return true;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\UserPasswordResetRequestTransfer $userPasswordResetRequestTransfer
-     * @param string $token
-     *
-     * @return string
-     */
     protected function createResetPasswordLink(UserPasswordResetRequestTransfer $userPasswordResetRequestTransfer, string $token): string
     {
         $query = $this->generateResetPasswordLinkQuery($token);
@@ -245,11 +210,6 @@ class ResetPassword implements ResetPasswordInterface
         return sprintf('%s%s?%s', $passwordResetBaseUrl, $passwordResetPath, $query);
     }
 
-    /**
-     * @param string $token
-     *
-     * @return string
-     */
     protected function generateResetPasswordLinkQuery(string $token): string
     {
         return http_build_query([
@@ -257,11 +217,6 @@ class ResetPassword implements ResetPasswordInterface
         ]);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\UserPasswordResetRequestTransfer $userPasswordResetRequestTransfer
-     *
-     * @return void
-     */
     protected function executeUserPasswordResetRequestStrategyPlugins(UserPasswordResetRequestTransfer $userPasswordResetRequestTransfer): void
     {
         foreach ($this->userPasswordResetRequestStrategyPlugins as $userPasswordResetRequestStrategyPlugin) {

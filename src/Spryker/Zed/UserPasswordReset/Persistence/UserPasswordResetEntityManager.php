@@ -18,21 +18,11 @@ use Spryker\Zed\Kernel\Persistence\AbstractEntityManager;
  */
 class UserPasswordResetEntityManager extends AbstractEntityManager implements UserPasswordResetEntityManagerInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\ResetPasswordTransfer $resetPasswordTransfer
-     *
-     * @return \Generated\Shared\Transfer\ResetPasswordTransfer
-     */
     public function createResetPassword(ResetPasswordTransfer $resetPasswordTransfer): ResetPasswordTransfer
     {
         return $this->saveResetPassword($resetPasswordTransfer, new SpyResetPassword());
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ResetPasswordTransfer $resetPasswordTransfer
-     *
-     * @return \Generated\Shared\Transfer\ResetPasswordTransfer
-     */
     public function updateResetPassword(ResetPasswordTransfer $resetPasswordTransfer): ResetPasswordTransfer
     {
         /** @var \Orm\Zed\UserPasswordReset\Persistence\SpyResetPassword $resetPasswordEntity */
@@ -44,11 +34,6 @@ class UserPasswordResetEntityManager extends AbstractEntityManager implements Us
         return $this->saveResetPassword($resetPasswordTransfer, $resetPasswordEntity);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ResetPasswordTransfer $resetPasswordTransfer
-     *
-     * @return \Generated\Shared\Transfer\ResetPasswordTransfer
-     */
     public function invalidatePreviousPasswordResets(ResetPasswordTransfer $resetPasswordTransfer): ResetPasswordTransfer
     {
         $statusField = SpyResetPasswordTableMap::getTableMap()
@@ -70,12 +55,6 @@ class UserPasswordResetEntityManager extends AbstractEntityManager implements Us
         return $resetPasswordTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ResetPasswordTransfer $resetPasswordTransfer
-     * @param \Orm\Zed\UserPasswordReset\Persistence\SpyResetPassword $resetPasswordEntity
-     *
-     * @return \Generated\Shared\Transfer\ResetPasswordTransfer
-     */
     protected function saveResetPassword(ResetPasswordTransfer $resetPasswordTransfer, SpyResetPassword $resetPasswordEntity): ResetPasswordTransfer
     {
         $resetPasswordEntity = $this->getFactory()

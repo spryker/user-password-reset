@@ -32,11 +32,6 @@ class UserPasswordResetDependencyProvider extends AbstractBundleDependencyProvid
      */
     public const PLUGINS_USER_PASSWORD_RESET_REQUEST_STRATEGY = 'PLUGINS_USER_PASSWORD_RESET_REQUEST_STRATEGY';
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     public function provideBusinessLayerDependencies(Container $container): Container
     {
         $container = parent::provideBusinessLayerDependencies($container);
@@ -48,11 +43,6 @@ class UserPasswordResetDependencyProvider extends AbstractBundleDependencyProvid
         return $container;
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     protected function addUserFacade(Container $container): Container
     {
         $container->set(static::FACADE_USER, function (Container $container) {
@@ -64,11 +54,6 @@ class UserPasswordResetDependencyProvider extends AbstractBundleDependencyProvid
         return $container;
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     protected function addUtilTextService(Container $container): Container
     {
         $container->set(static::SERVICE_UTIL_TEXT, function (Container $container) {
@@ -80,11 +65,6 @@ class UserPasswordResetDependencyProvider extends AbstractBundleDependencyProvid
         return $container;
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     protected function addUserPasswordResetRequestStrategyPlugins(Container $container): Container
     {
         $container->set(static::PLUGINS_USER_PASSWORD_RESET_REQUEST_STRATEGY, function () {

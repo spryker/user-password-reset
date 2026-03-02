@@ -17,11 +17,6 @@ use Spryker\Zed\Kernel\Persistence\AbstractRepository;
  */
 class UserPasswordResetRepository extends AbstractRepository implements UserPasswordResetRepositoryInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\ResetPasswordCriteriaTransfer $resetPasswordCriteriaTransfer
-     *
-     * @return \Generated\Shared\Transfer\ResetPasswordTransfer|null
-     */
     public function findOne(ResetPasswordCriteriaTransfer $resetPasswordCriteriaTransfer): ?ResetPasswordTransfer
     {
         $resetPasswordQuery = $this->getFactory()->createPropelResetPasswordQuery();
@@ -36,12 +31,6 @@ class UserPasswordResetRepository extends AbstractRepository implements UserPass
             ->mapResetPasswordEntityToResetPasswordTransfer($resetPasswordEntity, new ResetPasswordTransfer());
     }
 
-    /**
-     * @param \Orm\Zed\UserPasswordReset\Persistence\SpyResetPasswordQuery $resetPasswordQuery
-     * @param \Generated\Shared\Transfer\ResetPasswordCriteriaTransfer $resetPasswordCriteriaTransfer
-     *
-     * @return \Orm\Zed\UserPasswordReset\Persistence\SpyResetPasswordQuery
-     */
     protected function applyFilters(
         SpyResetPasswordQuery $resetPasswordQuery,
         ResetPasswordCriteriaTransfer $resetPasswordCriteriaTransfer

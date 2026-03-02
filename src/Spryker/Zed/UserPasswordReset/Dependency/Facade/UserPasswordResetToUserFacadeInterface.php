@@ -13,17 +13,7 @@ use Generated\Shared\Transfer\UserTransfer;
 
 interface UserPasswordResetToUserFacadeInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\UserTransfer $user
-     *
-     * @return \Generated\Shared\Transfer\UserTransfer
-     */
     public function updateUser(UserTransfer $user): UserTransfer;
 
-    /**
-     * @param \Generated\Shared\Transfer\UserCriteriaTransfer $userCriteriaTransfer
-     *
-     * @return \Generated\Shared\Transfer\UserCollectionTransfer
-     */
     public function getUserCollection(UserCriteriaTransfer $userCriteriaTransfer): UserCollectionTransfer;
 }

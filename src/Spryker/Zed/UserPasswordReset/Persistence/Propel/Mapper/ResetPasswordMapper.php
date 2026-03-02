@@ -12,12 +12,6 @@ use Orm\Zed\UserPasswordReset\Persistence\SpyResetPassword;
 
 class ResetPasswordMapper
 {
-    /**
-     * @param \Orm\Zed\UserPasswordReset\Persistence\SpyResetPassword $resetPasswordEntity
-     * @param \Generated\Shared\Transfer\ResetPasswordTransfer $resetPasswordTransfer
-     *
-     * @return \Generated\Shared\Transfer\ResetPasswordTransfer
-     */
     public function mapResetPasswordEntityToResetPasswordTransfer(
         SpyResetPassword $resetPasswordEntity,
         ResetPasswordTransfer $resetPasswordTransfer
@@ -29,12 +23,6 @@ class ResetPasswordMapper
             ->setFkUserId($resetPasswordEntity->getFkUser());
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ResetPasswordTransfer $resetPasswordTransfer
-     * @param \Orm\Zed\UserPasswordReset\Persistence\SpyResetPassword $resetPasswordEntity
-     *
-     * @return \Orm\Zed\UserPasswordReset\Persistence\SpyResetPassword
-     */
     public function mapResetPasswordTransferToResetPasswordEntity(
         ResetPasswordTransfer $resetPasswordTransfer,
         SpyResetPassword $resetPasswordEntity
